@@ -10,7 +10,7 @@ async def enviar_mesnagem(message, mensagem_usuario, is_private):
         print(e)
 
 def rodar_bot():
-    token = "MTEwNDI1MDgwNDY0ODU2MjY4OA.G2XQQ4.pACcIBHog0gRHum44E4dmPkLOUxqptcQZBIjGA"
+    token = "token aleatorio"
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
