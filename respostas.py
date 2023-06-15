@@ -15,7 +15,8 @@ def receber_resposta(texto: str) -> str:
         \n==================================\n
         1- Receber indicação de jogo aleatório\n
         2- Receber indicação por categoria de jogo\n
-        3- Ajuda\n
+        3- Deseja ver a definição do que é JOGO?\n
+        4- Ajuda\n
         \n==================================\n"""
     match minuscula:
         case "1":
@@ -26,8 +27,9 @@ def receber_resposta(texto: str) -> str:
             data = jogo_aleatorio['data lançamento'].values[0]
             categoria = jogo_aleatorio['categoria'].values[0]
             dev = jogo_aleatorio['desenvolvedor'].values[0]
+            link = jogo_aleatorio['trailers'].values[0]
 
-            indicacao = f"Jogo aleatório: {nome}\nData de lançamento: {data}\nCategoria: {categoria}\nDesenvolvedor: {dev}"
+            indicacao = f"Jogo aleatório: {nome}\nData de lançamento: {data}\nCategoria: {categoria}\nDesenvolvedor: {dev}\nTrailer: {link}"
 
             return f"Aqui está uma indicação de jogo aleatório:\n\n{indicacao}"
         
@@ -47,11 +49,14 @@ def receber_resposta(texto: str) -> str:
             data = jogo_aleatorio['data lançamento'].values[0]
             categoria = jogo_aleatorio['categoria'].values[0]
             dev = jogo_aleatorio['desenvolvedor'].values[0]
+            link = jogo_aleatorio['trailers'].values[0]
 
-            indicacao = f"Jogo aleatório: {nome}\nData de lançamento: {data}\nCategoria: {categoria}\nDesenvolvedor: {dev}"
+            indicacao = f"Jogo aleatório: {nome}\nData de lançamento: {data}\nCategoria: {categoria}\nDesenvolvedor: {dev}\nTrailer: {link}"
 
             return f'Aqui está uma indicação de jogo aleatório na categoria "{categoria_desejada}":\n\n{indicacao}'
 
+        case "3":
+            return "https://www.youtube.com/watch?v=j-wH8EPJ03U&t=1s&ab_channel=Zangado"
 
         case "ajuda":
             return "Comandos de ativação: Olá, 1, 2, categoria: coloque a categoria desejada, ajuda\n\nCaso queira receber as mensagens no seu privado, coloque uma '!' no inicio de cada comando."
