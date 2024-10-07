@@ -1,5 +1,6 @@
 import discord
 import respostas
+import requests 
 
 async def enviar_mesnagem(message, mensagem_usuario, is_private):
     try:
@@ -9,8 +10,33 @@ async def enviar_mesnagem(message, mensagem_usuario, is_private):
     except Exception as e:
         print(e)
 
+def solicitar_igdb(api_endpoint, access_token):
+    # Defina o cabeçalho com o Client-ID e o token de acesso
+    headers = {
+        "Client-ID": "client id aqui",
+        "Authorization": f"Bearer {access_token}"
+    }
+
+    # Monte a URL da solicitação
+    base_url = "https://api.igdb.com/v4/"
+    url = base_url + api_endpoint
+
+    # Defina os campos e outros parâmetros no corpo da solicitação
+    body = "fields *; limit 10;"
+
+    # Faça a solicitação POST à API da IGDB
+    response = requests.post(url, headers=headers, data=body)
+
+    # Verifique a resposta e retorne os dados ou trate os erros
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    else:
+        print(f"Erro na solicitação à API da IGDB: {response.status_code} - {response.text}")
+        return None
+
 def rodar_bot():
-    token = "token aleatorio"
+    token = "token aqui"
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
@@ -36,4 +62,7 @@ def rodar_bot():
             await enviar_mesnagem(message, mensagem_usuario, is_private=False)
 
     client.run(token)
+
+
+
 
