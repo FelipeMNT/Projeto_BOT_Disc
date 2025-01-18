@@ -1,4 +1,4 @@
-import bot
+import guru
 
 if __name__ == "__main__":
-    bot.rodar_bot()
+    guru.rodar_bot()
